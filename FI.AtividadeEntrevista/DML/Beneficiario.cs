@@ -8,6 +8,10 @@ namespace FI.AtividadeEntrevista.DML
 {
     public class Beneficiario
     {
+        /// <summary>
+        /// Id
+        /// </summary>
+        public long Id { get; set; }
         public string Nome{ get; set; }
         public string CPF { get; set; }
 

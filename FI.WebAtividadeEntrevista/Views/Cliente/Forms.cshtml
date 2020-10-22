@@ -85,7 +85,11 @@
                 @Html.ActionLink("Voltar", "Index", "Cliente", new { }, new { @class = "btn btn-sm btn-danger" })
             </div>
         </div>
+
+        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-beneficiario">Beneficiários</button>
+
     </div>
 
-
 </form>
+
+@Html.Partial("../Beneficiario/Incluir")

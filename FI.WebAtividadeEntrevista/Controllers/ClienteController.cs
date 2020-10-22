@@ -48,8 +48,14 @@ namespace WebAtividadeEntrevista.Controllers
                 }
                 
 
-                model.Id = bo.Incluir(cliente);
+                cliente.Id = bo.Incluir(cliente);
 
+
+                var beneficiarios = AjusteBeneficiario(model.Beneficiarios, cliente);
+
+                BoBeneficiario beneficiarioBo = new BoBeneficiario();
+
+                beneficiarioBo.Incluir(beneficiarios);
 
                 return Json("Cadastro efetuado com sucesso");
             }
@@ -73,8 +79,15 @@ namespace WebAtividadeEntrevista.Controllers
             }
             else
             {
-                bo.Alterar(ConstoiCliente(model));
-                               
+                var cliente = ConstoiCliente(model);
+                bo.Alterar(cliente);
+
+                var beneficiarios = AjusteBeneficiario(model.Beneficiarios, cliente);
+
+                BoBeneficiario beneficiarioBo = new BoBeneficiario();
+
+                beneficiarioBo.Alterar(beneficiarios);
+
                 return Json("Cadastro alterado com sucesso");
             }
         }
@@ -84,11 +97,14 @@ namespace WebAtividadeEntrevista.Controllers
         {
             BoCliente bo = new BoCliente();
             Cliente cliente = bo.Consultar(id);
-            Models.ClienteModel model = null;
+            ClienteModel model = null;
+
+            BoBeneficiario beneficiarioBo = new BoBeneficiario();
 
             if (cliente != null)
             {
                 model = ConstroiClientModel(cliente);
+                model.Beneficiarios = beneficiarioBo.ConsultarPorClienteId(cliente.Id);
             }
 
             return View(model);
@@ -145,6 +161,7 @@ namespace WebAtividadeEntrevista.Controllers
         {
             return new Cliente()
             {
+                Id = model.Id,
                 CEP = model.CEP,
                 Cidade = model.Cidade,
                 Email = model.Email,
@@ -154,8 +171,18 @@ namespace WebAtividadeEntrevista.Controllers
                 Nome = model.Nome,
                 Sobrenome = model.Sobrenome,
                 Telefone = model.Telefone,
-                CPF = model.CPF.OnlyNumerics()
+                CPF = model.CPF.OnlyNumerics(),
+                
             };
+        }
+
+        private List<Beneficiario>AjusteBeneficiario(List<Beneficiario> beneficiarios, Cliente cliente)
+        {
+            foreach (var beneficiario in beneficiarios)
+            {
+                beneficiario.Cliente = cliente;
+            }
+            return beneficiarios;
         }
     }
 }
