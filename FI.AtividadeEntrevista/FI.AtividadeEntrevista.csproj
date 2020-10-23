@@ -74,6 +74,7 @@
     <Compile Include="DML\Cliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UTIL\Util.cs" />
+    <Content Include="DAL\Beneficiarios\Procedures\FI_SP_DelBeneficiarioCliente.sql" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DAL\Clientes\Procedures\FI_SP_PesqCliente.sql" />

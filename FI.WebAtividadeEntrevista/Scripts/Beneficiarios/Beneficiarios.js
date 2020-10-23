@@ -23,8 +23,9 @@ function getTRBeneficiarioHTML(beneficiario) {
                   <th scope="row">${beneficiario.CPF}</th>
                   <td>${beneficiario.Nome}</td>
                   <td>
-                    <button type="button" name="editar" class="btn btn-primary" onclick="editarBeneficiario('${beneficiario.CPF}')">Editar</button>
-                 
+                    <button type="button" name="alterar" class="btn btn-primary" onclick="editarBeneficiario('${beneficiario.CPF}')">Alterar</button>
+                 </td>
+                  <td>
                     <button type="button" name"excluir" class="btn btn-primary" onclick="excluirBeneficiario('${beneficiario.CPF}')">Excluir</button>
                   </td>
                   </tr>`;

@@ -12,41 +12,45 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group">
+                    <div class="row align-items-end">
+                        <div class="col-md-5">
                             <label for="NomeBeneficiario">Nome:</label>
-                            <input  type="text" class="form-control" id="NomeBeneficiario" name="Nome" placeholder="Ex.: João" maxlength="50">
+                            <div class="form-group">
+
+                                <input type="text" class="form-control" id="NomeBeneficiario" name="Nome" placeholder="Ex.: João" maxlength="50">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
+                        <div class="col-md-5">
                             <label for="CPFBeneficiario">CPF:</label>
-                            <input  type="text" class="form-control" id="CPFBeneficiario" name="CPF" placeholder="000.000.000-00" maxlength="14">
+                            <div class="form-group">
+
+                                <input type="text" class="form-control" id="CPFBeneficiario" name="CPF" placeholder="000.000.000-00" maxlength="14">
+                            </div>
+                        </div>
+                        <div class="col-md-2" style="height: 58px">
+                           
+                                <button type="button" style="margin-top: 27px" id ="btn-incluir" class="btn btn-sm btn-success" onclick="incluirBeneficiario()">Incluir</button>
+                           
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <button type="button" id="btn-incluir" class="btn btn-primary" onclick="incluirBeneficiario()">Incluir</button>
-                        </div>
-                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">CPF</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">CPF</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-   
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>

@@ -5,10 +5,9 @@
 	@Id           BIGINT
 AS
 BEGIN
-	UPDATE Beneficiarios 
-	SET 
-		NOME = @NOME, 
-		IDCLIENTE = @IDCLIENTE,
-		CPF = @CPF
-	WHERE Id = @Id
+delete from Beneficiarios where IDCLIENTE = @IDCLIENTE;
+
+	INSERT INTO BENEFICIARIOS (NOME, CPF, IDCLIENTE) 
+	VALUES (@NOME, @CPF, @IDCLIENTE)
+	
 END

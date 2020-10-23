@@ -1,0 +1,6 @@
+﻿CREATE PROC FI_SP_DelBeneficiarioPorCliente
+	@ClienteID BIGINT
+AS
+BEGIN
+	DELETE BENEFICIARIOS WHERE ClienteID = @ClienteID
+END

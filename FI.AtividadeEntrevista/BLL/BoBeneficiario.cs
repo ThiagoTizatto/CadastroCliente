@@ -16,14 +16,17 @@ namespace FI.AtividadeEntrevista.BLL
         /// Inclui um novo Beneficiario
         /// </summary>
         /// <param name="Beneficiario">Objeto de Beneficiario</param>
-        public long Incluir(Beneficiario Beneficiario)
+        private long Incluir(Beneficiario Beneficiario)
         {
             DaoBeneficiario daoBeneficiario = new DaoBeneficiario();
 
             return daoBeneficiario.Incluir(Beneficiario);
         }
 
-
+        /// <summary>
+        /// Inclui uma lista de beneficiários
+        /// </summary>
+        /// <param name="Beneficiarios">Lista de beneficiários</param>
         public void Incluir(List<Beneficiario> Beneficiarios)
         {
 
@@ -33,27 +36,11 @@ namespace FI.AtividadeEntrevista.BLL
             }
         }
 
-
-        /// <summary>
-        /// Altera um Beneficiario
-        /// </summary>
-        /// <param name="Beneficiario">Objeto de Beneficiario</param>
-        public void Alterar(Beneficiario Beneficiario)
+        public void Alterar(List<Beneficiario> beneficiarios, long ClienteId)
         {
-            DaoBeneficiario daoBeneficiario = new DaoBeneficiario();
-            daoBeneficiario.Alterar(Beneficiario);
-        }
+            ExcluirPorCliente(ClienteId);
 
-        public void Alterar(List<Beneficiario> Beneficiarios)
-        {
-            foreach (var item in Beneficiarios)
-            {
-                if (item.Id > 0)
-                    Alterar(item);
-
-                else
-                    Incluir(item);
-            }
+            Incluir(beneficiarios);
         }
 
         /// <summary>
@@ -69,7 +56,12 @@ namespace FI.AtividadeEntrevista.BLL
             beneficiario.Cliente = daoCliente.Consultar(beneficiario.Cliente.Id);
             return beneficiario;
         }
-        
+
+        /// <summary>
+        /// Consulta o Beneficiario pelo id do cliente
+        /// </summary>
+        /// <param name="id">id do Cliente</param>
+        /// <returns>Uma lista de beneficiários</returns>
         public List<Beneficiario> ConsultarPorClienteId(long clienteId)
         {
             DaoBeneficiario daoBeneficiario = new DaoBeneficiario();
@@ -90,35 +82,13 @@ namespace FI.AtividadeEntrevista.BLL
             daoBeneficiario.Excluir(id);
         }
 
-        /// <summary>
-        /// Lista os Beneficiarios
-        /// </summary>
-        public List<Beneficiario> Listar()
+        public void ExcluirPorCliente (long id)
         {
             DaoBeneficiario daoBeneficiario = new DaoBeneficiario();
-            return daoBeneficiario.Listar();
+            daoBeneficiario.ExcluirPorCliente(id);
         }
 
-        /// <summary>
-        /// Lista os Beneficiarios
-        /// </summary>
-        public List<Beneficiario> Pesquisa(int iniciarEm, int quantidade, bool crescente, out int qtd)
-        {
-            DaoBeneficiario daoBeneficiario = new DaoBeneficiario();
-            return daoBeneficiario.Pesquisa(iniciarEm, quantidade, crescente, out qtd);
-        }
-
-        /// <summary>
-        /// VerificaExistencia
-        /// </summary>
-        /// <param name="CPF"></param>
-        /// <param name="idCliente"></param>
-        /// <returns></returns>
-        public bool VerificarExistencia(string CPF, long idCliente)
-        {
-            DaoBeneficiario daoBeneficiario = new DaoBeneficiario();
-            return daoBeneficiario.VerificarExistencia(CPF, idCliente);
-        }
+     
     }
 
 }
