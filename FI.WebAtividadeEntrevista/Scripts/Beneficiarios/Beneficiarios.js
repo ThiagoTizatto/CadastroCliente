@@ -89,8 +89,10 @@ function incluirBeneficiario() {
 }
 
 function validaBeneficiario(beneficiario) {
-    if (beneficiario.Nome == "" || beneficiario.CPF == "")
+    if (beneficiario.Nome == "" || beneficiario.CPF == "") {
+        alert("Preencha todos os campos");
         return false;
+    }
 
     if (!validarCPF(beneficiario.CPF)) {
         alert("CPF inválido");

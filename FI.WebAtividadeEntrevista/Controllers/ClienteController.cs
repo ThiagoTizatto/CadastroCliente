@@ -50,7 +50,7 @@ namespace WebAtividadeEntrevista.Controllers
 
                 cliente.Id = bo.Incluir(cliente);
 
-                if (model.Beneficiarios.Count > 0)
+                if (model.Beneficiarios != null)
                 {
                     var beneficiarios = AjusteBeneficiario(model.Beneficiarios, cliente);
 
